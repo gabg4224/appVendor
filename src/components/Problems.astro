@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import ctaImage from "../assets/coffeCup.webp";
 import laptop from "../assets/laptop.webp";
+import LastProjects from "./LastProjects";
 ---
 
 <section class="w-full flex-1">
@@ -132,7 +133,13 @@ import laptop from "../assets/laptop.webp";
           class="lg:h-96 h-64 relative flex justify-center pt-6 px-0 pb-0 overflow-hidden bg-black rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
         >
           <div class="w-full absolute z-0">
-            <Image class="w-1/2 mx-auto" format="avif" src={ctaImage} alt="dashboard image" />
+            <Image
+              class="w-1/2 mx-auto"
+              format="avif"
+              quality={"low"}
+              src={ctaImage}
+              alt="dashboard image"
+            />
           </div>
           <div
             class="h-full w-full flex items-end justify-center text-3xl px-3 text-center pb-7 z-10 text-white font-extrabold"
@@ -143,9 +150,16 @@ import laptop from "../assets/laptop.webp";
         <article
           class="lg:h-96 h-64 relative flex justify-center pt-6 px-0 pb-0 overflow-hidden bg-black rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
         >
-          <div class="w-full h-full flex lg:-top-10
-           justify-center items-center absolute z-0">
-            <Image class="w-2/3 mx-auto" format="avif" src={laptop} alt="dashboard image" />
+          <div
+            class="w-full h-full flex lg:-top-10
+           justify-center items-center absolute z-0"
+          >
+            <Image
+              class="w-2/3 mx-auto"
+              format="avif"
+              src={laptop}
+              alt="dashboard image"
+            />
           </div>
           <div
             class="h-full w-full flex items-end justify-center text-3xl px-3 text-center pb-7 z-10 text-white font-extrabold"
@@ -169,14 +183,7 @@ import laptop from "../assets/laptop.webp";
         </p>
       </div>
       <div class="grid gap-8 lg:grid-cols-2">
-        <article
-          class="h-96 p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
-        >
-        </article>
-        <article
-          class="h-96 p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
-        >
-        </article>
+        <LastProjects  />
       </div>
     </div>
   </section>
