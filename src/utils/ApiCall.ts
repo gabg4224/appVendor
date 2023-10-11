@@ -12,6 +12,24 @@ export type ElementoModelo = {
       };
     };
   };
+ export type Title = string;
+
+ export type CoverPicture = {
+  data: {
+    id: number;
+    attributes: {
+      url: string;
+    };
+  };
+};
+
+export interface ProjectCardProps {
+
+  title: Title;
+  coverPicture: CoverPicture;
+}
+
+
   
   export default async function fetchData(): Promise<ElementoModelo[]> {
     try {
@@ -29,4 +47,4 @@ export type ElementoModelo = {
       throw error; // Puedes manejar el error o lanzarlo nuevamente
     }
   }
-  
+

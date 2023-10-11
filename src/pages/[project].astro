@@ -1,0 +1,28 @@
+---
+import type { ElementoModelo } from "../utils/ApiCall";
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+import { Image } from "astro:assets";
+const data = await fetch(
+  "https://db-appvendor.onrender.com/api/proyectos?fields[0]=title&populate[coverPicture][fields][0]=url"
+)
+  .then((response) => response.json())
+  .then((data) => data.data);
+console.log(data);
+
+const { project } = Astro.params;
+
+const info = data.find((item: ElementoModelo) => item.attributes?.title === project);
+
+if(!info){
+  return Astro.redirect("/404");
+}
+---
+
+
+<Layout title={info.attributes?.title}>
+    <h1>{project}</h1> 
+    <Image alt={info.attributes?.title}  style={`view-transition-name: project-${info.id}`} quality={"low"} src={info.attributes?.coverPicture.data.attributes.url} format="avif" width={100} height={100} class="object-cover w-full h-full "/>
+    <CTA/>
+</Layout>
+

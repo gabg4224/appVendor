@@ -1,0 +1,23 @@
+---
+import type { ElementoModelo } from "../utils/ApiCall";
+import ProjectCardAstro from "./ProjectCardAstro.astro";
+ const data = await fetch(
+  "https://db-appvendor.onrender.com/api/proyectos?fields[0]=title&populate[coverPicture][fields][0]=url"
+)
+  .then((response) => response.json())
+  .then((data) => data.data);
+console.log(data);
+---
+
+
+  {
+    data?.map((item: ElementoModelo, index: number) => (
+      <ProjectCardAstro
+        key={index}
+        id={item.id}
+        title={item.attributes?.title}
+        coverPicture={item.attributes?.coverPicture}
+      />
+    ))
+  }
+

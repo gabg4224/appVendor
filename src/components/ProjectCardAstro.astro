@@ -1,26 +1,12 @@
 ---
 import { Image } from "astro:assets";
-type Title = string;
-
-type CoverPicture = {
-  data: {
-    id: number;
-    attributes: {
-      url: string;
-    };
-  };
-};
-
-interface ProjectCardProps {
-  title: Title;
-  coverPicture: CoverPicture;
-}
-
-const {  title, coverPicture } = Astro.props;
+import type { Title, CoverPicture } from "../utils/ApiCall";
+const {  title, coverPicture,id } = Astro.props;
 ---
 
-<article
-class="h-96 p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
->
-<Image alt={title} src={coverPicture.data.attributes.url} class="w-full"/>
-</article>
+<a
+class="h-96 p-6  overflow-hidden  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+
+href={`/${title}`}>
+<Image alt={title} style={`view-transition-name: project-${id}`} src={coverPicture.data.attributes.url} format="avif" width={100} height={100} class="object-cover w-full h-full "/>
+</a>
