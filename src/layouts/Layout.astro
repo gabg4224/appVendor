@@ -53,19 +53,27 @@ const { title } = Astro.props;
   }
 </style>
 <script>
-  const checkIsNavigationSupported = () => {
-    return Boolean(document.startViewTransition);
-  };
+
 
   
-  if (!checkIsNavigationSupported()) return;
+
 
 
 
   window.navigation.addEventListener("navigate", (event: any) => {
     console.log(event.destination.url);
+
+    const checkIsNavigationSupported = () => {
+    return Boolean(document.startViewTransition);
+  };
+
+if (!checkIsNavigationSupported()) return;
+
     const toURL = new URL(event.destination.url);
     if (location.origin !== toURL.origin) return;
+
+
+  
 
     event.intercept({
       async handler() {
