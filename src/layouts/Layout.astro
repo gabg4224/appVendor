@@ -1,4 +1,7 @@
 ---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import CTA from "../components/CTA.astro";
 interface Props {
   title: string;
 }
@@ -19,7 +22,11 @@ const { title } = Astro.props;
   </head>
   <body>
     <div id="content">
+
+<Header/>
       <slot />
+      <CTA/>
+   <Footer/>
     </div>
   </body>
 </html>
@@ -53,27 +60,17 @@ const { title } = Astro.props;
   }
 </style>
 <script>
-
-
-  
-
-
-
-
   window.navigation.addEventListener("navigate", (event: any) => {
     console.log(event.destination.url);
 
     const checkIsNavigationSupported = () => {
-    return Boolean(document.startViewTransition);
-  };
+      return Boolean(document.startViewTransition);
+    };
 
-if (!checkIsNavigationSupported()) return;
+    if (!checkIsNavigationSupported()) return;
 
     const toURL = new URL(event.destination.url);
     if (location.origin !== toURL.origin) return;
-
-
-  
 
     event.intercept({
       async handler() {
