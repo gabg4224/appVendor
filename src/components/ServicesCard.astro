@@ -9,7 +9,7 @@ const { serviceImage, alt, title } = Astro.props;
 >
   <div class="w-full absolute z-0 ">
     <Image
-      class={`w-56 object-cover  mx-auto ${serviceImage === laptop ? "items-center w-72" : ""}`}
+      class={`w-56 object-cover  mx-auto ${serviceImage === laptop ? "items-center w-72 lg:w-2/3" : ""}`}
       quality={"low"}
       src={laptop}
       alt={alt}
