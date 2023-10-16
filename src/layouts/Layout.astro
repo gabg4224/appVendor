@@ -20,7 +20,7 @@ const { title } = Astro.props;
     <meta name="view-transition" content="same-origin" />
     <title>{title}</title>
   </head>
-  <body>
+  <body id="body">
     <div id="content">
       <Header />
       <slot />
@@ -76,7 +76,7 @@ const { title } = Astro.props;
         //cargamos la pagina de destino utlizando fetch para sacar e HTML
         const response = await fetch(toURL.pathname);
         const html = await response.text();
-        const [, data] = html.match(/<body>([\s\S]*)<\/body>/i);
+        const [, data] = html.match(/<body(?:[^>]*)id\s*=\s*["']\s*body\s*["'](?:[^>]*)>([\s\S]*)<\/body>/i);
 
         document.startViewTransition(() => {
           console.log(data);
