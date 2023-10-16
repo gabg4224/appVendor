@@ -79,6 +79,7 @@ const { title } = Astro.props;
         const [, data] = html.match(/<body>([\s\S]*)<\/body>/i);
 
         document.startViewTransition(() => {
+          console.log(data);
           document.body.innerHTML = data;
 
           document.documentElement.scrollTop = 0;
